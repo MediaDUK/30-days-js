@@ -1,3 +1,4 @@
-import dayOne from './dayOne';
+import dayOne from './day/one';
 
 dayOne();
+
