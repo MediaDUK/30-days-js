@@ -1,12 +1,16 @@
 {
   "presets": [
     [
-      "env", {
+      "env",
+      {
         "targets": {
           "browsers": ["last 2 versions", "safari >= 7"],
           "debug": true
         }
       }
+    ],
+    [
+      "babel-preset-react"
     ]
   ]
 }
