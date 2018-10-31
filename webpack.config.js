@@ -1,5 +1,5 @@
-const path = require('path'),
-  HtmlWebPackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   // https://webpack.js.org/configuration/target/
@@ -10,13 +10,18 @@ module.exports = {
   // webpack-dev-server will monitor the code dependency
   // of these entry points, and re-create the bundle
   // when changes are detected.
-  entry: ['./src/js/index.js', './src/sass/main.sass', './src/index.html'],
+  entry: [
+    './src/js/index.js',
+    './src/sass/main.sass',
+    './src/index.html'],
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: 'js/[name].js'
+    filename: 'js/[name].js',
   },
   devtool: 'inline-source-map',
-  // regex statement to identify the JavaScript files to be transpiled with the babel-loader (except node_modules). Babel-loader is told to use the babel-preset-env (transpile parameters .babelrc)
+  // regex statement to identify the JavaScript files to be transpiled
+  // with the babel-loader (except node_modules). Babel-loader is told
+  // to use the babel-preset-env (transpile parameters .babelrc)
   module: {
     rules: [
       {
@@ -25,9 +30,9 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['babel-preset-react']
-          }
-        }
+            presets: ['babel-preset-react'],
+          },
+        },
       },
       {
         test: /\.sass$/,
@@ -35,28 +40,28 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: 'css/[name].css'
-            }
+              name: 'css/[name].css',
+            },
           },
           {
-            loader: 'extract-loader'
+            loader: 'extract-loader',
           },
           {
             // parses the CSS into JavaScript and resolves any dependencies
-            loader: 'css-loader?-url'
+            loader: 'css-loader?-url',
           },
           {
             loader: 'postcss-loader',
             options: {
               config: {
-                path: './postcss.config.js'
-              }
-            }
+                path: './postcss.config.js',
+              },
+            },
           },
           {
-            loader: 'sass-loader'
-          }
-        ]
+            loader: 'sass-loader',
+          },
+        ],
       },
       {
         test: /\.html$/,
@@ -64,10 +69,10 @@ module.exports = {
           {
             loader: 'html-loader',
             options: {
-              minimize: true
-            }
-          }
-        ]
+              minimize: true,
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpg|gif)$/i,
@@ -76,25 +81,25 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 8192,
-              name: 'img/[name].[ext]'
-            }
-          }
-        ]
+              name: 'img/[name].[ext]',
+            },
+          },
+        ],
       },
       {
         test: /\.mp3$/,
         loader: 'file-loader',
         query: {
-          name: 'audio/[name].[ext]'
-        }
-      }
-    ]
+          name: 'audio/[name].[ext]',
+        },
+      },
+    ],
   },
   plugins: [
     new HtmlWebPackPlugin({
       template: './src/index.html',
-      filename: './index.html'
-    })
+      filename: './index.html',
+    }),
   ],
   devServer: {
     // host can be omitted unless you are using 'docker'
@@ -104,15 +109,15 @@ module.exports = {
     port: 9000,
     watchContentBase: true,
     headers: {
-      'X-Custom-Header': 'yes'
+      'X-Custom-Header': 'yes',
     },
     stats: {
-      colors: true
-    }
+      colors: true,
+    },
     // https: {
     //   cert: fs.readFileSync('path-to-cert-file.pem'),
     //   key: fs.readFileSync('path-to-key-file.pem'),
     //   cacert: fs.readFileSync('path-to-cacert-file.pem')
     // }
-  }
+  },
 };

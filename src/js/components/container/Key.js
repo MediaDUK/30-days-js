@@ -1,16 +1,18 @@
-import React, { Component } from "react";
-class Key extends Component {
-  constructor(props) {
-    super(props);
-  }
+import React from 'react';
+import PropTypes from 'prop-types';
 
-  render() {
-    return (
-      <div data-key={this.props.keyCode} className="key">
-        <kbd>{this.props.keyLetter}</kbd>
-        <span className="sound">{this.props.name}</span>
-      </div>
-    );
-  }
+function Key({ keyCode, keyLetter, keyName }) {
+  return (
+    <div data-key={keyCode} className="key">
+      <kbd>{keyLetter}</kbd>
+      <span className="sound">{keyName}</span>
+    </div>
+  );
 }
+Key.propTypes = {
+  keyCode: PropTypes.number.isRequired,
+  keyLetter: PropTypes.string.isRequired,
+  keyName: PropTypes.string.isRequired,
+};
+
 export default Key;
