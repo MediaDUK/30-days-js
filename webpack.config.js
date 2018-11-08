@@ -24,11 +24,23 @@ module.exports = {
       {
         test: /\.js$/,
         use: {
-          loader: "babel-loader",
+          loader: "babel-loader?compact=false",
           options: {
             presets: ["babel-preset-react"]
           }
         }
+      },
+      {
+        test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        use: "url-loader?limit=10000"
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+        use: "file-loader"
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
       },
       {
         test: /\.sass$/,
