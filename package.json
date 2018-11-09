@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode=production",
-    "dev": "webpack --watch --mode=development & webpack-dev-server --open",
+    "dev": "webpack-dev-server --open",
     "serve": "http-server -p 9000 -d -o"
   },
   "repository": {

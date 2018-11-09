@@ -1,16 +1,18 @@
+import jquery from "jquery/dist/jquery.slim";
+import Popper from "popper.js/dist/popper";
+import "bootstrap/dist/js/bootstrap";
 import React from "react";
 import ReactDOM from "react-dom";
-import Nav from "./components/container/Nav/Nav";
-
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
 const app = document.getElementById("app");
-// import Header from "./components/presentational/Header";
-// import DayOne from "./components/presentational/DayOne";
-// import DayTwo from "./components/presentational/DayTwo";
-
-function Index() {
-  return <Nav />;
-}
 
 if (app) {
-  ReactDOM.render(<Index />, app);
+  ReactDOM.render(
+    // BrowserRouter passes history obj down the component tree
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>,
+    app
+  );
 }

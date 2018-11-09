@@ -32,16 +32,28 @@ module.exports = {
       },
       {
         test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: "url-loader?limit=10000"
+        use: {
+          loader: "url-loader?limit=10000",
+          options: {
+            name: "[name].[ext]",
+            outputPath: "fonts/"
+          }
+        }
       },
       {
         test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
-        use: "file-loader"
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "[name].[ext]",
+            outputPath: "fonts/"
+          }
+        }
       },
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      },
+      // {
+      //   test: /\.css$/,
+      //   use: ["style-loader", "css-loader"]
+      // },
       {
         test: /\.sass$/,
         use: [
