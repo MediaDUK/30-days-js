@@ -10,7 +10,7 @@ module.exports = {
   // webpack-dev-server will monitor the code dependency
   // of these entry points, and re-create the bundle
   // when changes are detected.
-  entry: ["./src/js/index.js", "./src/sass/main.sass", "./src/index.html"],
+  entry: ["./src/js/index.js", "./src/scss/main.scss", "./src/index.html"],
   output: {
     path: path.resolve(__dirname, "public"),
     filename: "js/[name].js"
@@ -55,7 +55,7 @@ module.exports = {
       //   use: ["style-loader", "css-loader"]
       // },
       {
-        test: /\.sass$/,
+        test: /\.scss$/,
         use: [
           {
             loader: "file-loader",
